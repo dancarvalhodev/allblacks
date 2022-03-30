@@ -5,7 +5,7 @@ class BaseController
 {
 	function __construct()
 	{
-		if(!session_status())
+		if(session_status() != PHP_SESSION_ACTIVE)
 		{
 			session_start();
 		}

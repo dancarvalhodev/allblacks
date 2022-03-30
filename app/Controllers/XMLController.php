@@ -59,13 +59,13 @@ class XMLController extends BaseController
               $stmt = $this->banco->conn->prepare("INSERT INTO torcedor (nome, documento, cep, endereco, bairro, cidade, uf, telefone, email, ativo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
               $stmt->execute([$pessoa['nome'], $pessoa['documento'], $pessoa['cep'], $pessoa['endereco'], $pessoa['bairro'], $pessoa['cidade'], $pessoa['uf'], $pessoa['telefone'], $pessoa['email'], $pessoa['ativo']]);
             }
-            catch(\PDOException $e) {
+            catch(\PDOException $e) 
+            {
               $errors[] = $e->getMessage();
               continue;
             }
           }
         }
-
         header('Location: /');
       }
     }
