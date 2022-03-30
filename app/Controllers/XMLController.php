@@ -14,9 +14,8 @@ class XMLController extends BaseController
     {
       $xml = $_FILES['xmlFile'];
 
-      if(isset($xml)){
-        $errors= array();
-
+      if(isset($xml))
+      {
         $file_name = $xml['name'];
         $file_tmp = $xml['tmp_name'];
         $file_type = $xml['type'];
@@ -26,24 +25,23 @@ class XMLController extends BaseController
         
         if(in_array($file_ext,$extensions) === false)
         {
-          $errors[] = "Extensão não válida, por favor escolha um XML.";
+          $_SESSION['msg'] = 'Extensão não válida, por favor escolha um XML.';
+          header('Location: /');
         }
 
         if($file_type !== 'text/xml')
         {
-          $errors[] = "Arquivo inválido, por favor escolha um XML.";
+          $_SESSION['msg'] = 'Arquivo inválido, por favor escolha um XML.';
+          header('Location: /');
         }
         
-        if(empty($errors)==true)
-        {
-          move_uploaded_file($file_tmp,"./Uploads/".$file_name);
-          echo "Deu Certo";
-        }
-        else
-        {
-          print_r($errors);
-        }
-     }
+        move_uploaded_file($file_tmp,"./Uploads/".$file_name);
+        
+        // Consumo do XML
+
+        $_SESSION['msg'] = 'Arquivo enviado com sucesso';
+        header('Location: /');
+      }
     }
   }
 }

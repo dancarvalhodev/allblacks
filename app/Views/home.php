@@ -1,5 +1,15 @@
 <hr class="separador">
 <hr class="separador">
+
+<?php if(isset($_SESSION['msg'])): ?>
+    <div class="text-center alert alert-warning alert-dismissible fade show">
+        <strong><?= $_SESSION['msg'] ?></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php endif; ?>
+
+<?php unset($_SESSION['msg']) ?>
+
 <hr class="separador">
 <hr class="separador">
 
