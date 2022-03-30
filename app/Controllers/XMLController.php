@@ -1,12 +1,21 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\BaseModel;
+
 class XMLController extends BaseController
 {
+  private  $banco;
+
 	public function index()
 	{
 		parent::buildViewStructure('XML/index');
 	}
+
+  function __construct()
+  {
+    $this->banco = new BaseModel();
+  }
 
   public function upload()
   {
@@ -36,10 +45,27 @@ class XMLController extends BaseController
         }
         
         move_uploaded_file($file_tmp,"./Uploads/".$file_name);
-        
-        // Consumo do XML
 
-        $_SESSION['msg'] = 'Arquivo enviado com sucesso';
+        $xmlFile = simplexml_load_file("./Uploads/". $file_name) or die("Error: Cannot create object");
+        
+        if($this->banco->status)
+        {
+          $errors = array();
+
+          foreach($xmlFile->torcedor as $pessoa)
+          {
+            try
+            {
+              $stmt = $this->banco->conn->prepare("INSERT INTO torcedor (nome, documento, cep, endereco, bairro, cidade, uf, telefone, email, ativo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+              $stmt->execute([$pessoa['nome'], $pessoa['documento'], $pessoa['cep'], $pessoa['endereco'], $pessoa['bairro'], $pessoa['cidade'], $pessoa['uf'], $pessoa['telefone'], $pessoa['email'], $pessoa['ativo']]);
+            }
+            catch(\PDOException $e) {
+              $errors[] = $e->getMessage();
+              continue;
+            }
+          }
+        }
+
         header('Location: /');
       }
     }

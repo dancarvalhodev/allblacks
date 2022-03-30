@@ -5,7 +5,10 @@ class BaseController
 {
 	function __construct()
 	{
-		session_start();
+		if(!session_status())
+		{
+			session_start();
+		}
 	}
 
     protected function buildViewStructure($viewName, $viewArray = [])
