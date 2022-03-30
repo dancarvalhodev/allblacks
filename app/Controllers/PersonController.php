@@ -15,6 +15,20 @@ class PersonController extends BaseController
 		parent::buildViewStructure('Person/index');
 	}
 
+	public function index_update()
+	{
+		$stmt = $this->banco->conn->prepare("SELECT * FROM torcedor");
+		$stmt->execute();
+		$data = $stmt->fetchAll();
+
+		parent::buildViewStructure('Person/index_update', $data);
+	}
+
+	public function index_update_form($param = '')
+	{
+		var_dump($param);
+	}
+
 	public function insert()
 	{
 		if ($_SERVER["REQUEST_METHOD"] == "POST") 

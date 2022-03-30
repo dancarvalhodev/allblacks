@@ -1,5 +1,5 @@
 <div class="card card-componente">
-  
+
   <?php if(isset($_SESSION['msg'])): ?>
         <div class="text-center alert alert-warning alert-dismissible fade show">
             <strong><?= $_SESSION['msg'] ?></strong>
@@ -24,7 +24,7 @@
       </div>
       <div class="row p-1">
         <div class="col-sm-12 text-center">
-          <a href="/select" class="btn btn-dark btn-home">Atualizar Dados</a>
+          <a href="/index_update" class="btn btn-dark btn-home">Atualizar Dados</a>
         </div>
       </div>
       <div class="row p-1">
