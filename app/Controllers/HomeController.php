@@ -5,6 +5,6 @@ class HomeController extends BaseController
 {
 	public function index()
 	{
-		echo 'Home';
+		parent::buildViewStructure('home');
 	}
 }

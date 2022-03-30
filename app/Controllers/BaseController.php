@@ -11,9 +11,9 @@ class BaseController
     protected function buildViewStructure($viewName, $viewArray = [])
     {
 			$_SESSION['data'] = $viewArray;
-
-			include 'views/header.php';
-			include 'views/' . $viewName . '.php';
-			include 'views/end.php';
+			
+			include $_SERVER['DOCUMENT_ROOT'] . '/../app/Views/Templates/header.php';
+			include $_SERVER['DOCUMENT_ROOT'] . '/../app/Views/' . $viewName . '.php';
+			include $_SERVER['DOCUMENT_ROOT'] . '/../app/Views/Templates/end.php';
     }
 }
