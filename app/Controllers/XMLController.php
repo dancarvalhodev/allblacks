@@ -66,6 +66,19 @@ class XMLController extends BaseController
             }
           }
         }
+
+        if(empty($errors))
+        {
+          $_SESSION['msg'] = 'Arquivo enviado e consumido com sucesso!';
+        }
+        else
+        {
+          foreach($errors as $erro)
+          {
+            $_SESSION['msg'] = $erro . '|';
+          }
+        }
+        
         header('Location: /');
       }
     }

@@ -33,11 +33,13 @@ class PersonController extends BaseController
 				{
 					$stmt = $this->banco->conn->prepare("INSERT INTO torcedor (nome, documento, cep, endereco, bairro, cidade, uf, telefone, email, ativo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 					$stmt->execute([$_POST['nome'], $_POST['documento'], $_POST['cep'], $_POST['endereco'], $_POST['bairro'], $_POST['cidade'], $_POST['uf'], $_POST['telefone'], $_POST['email'], '1']);
+					
+          $_SESSION['msg'] = 'Torcedor inserido com sucesso!';
 					header('Location: /');
 				}
 				catch(\PDOException $e) 
 				{
-					echo $e->getMessage();
+          $_SESSION['msg'] = $e->getMessage();
 				}
 				
 			}
