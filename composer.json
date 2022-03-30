@@ -1,0 +1,17 @@
+{
+    "name": "dan/allblacks",
+    "description": "Desafio Técnico P21 Sistemas",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Dan\\Allblacks\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniel Carvalho",
+            "email": "danielcarvalhodev@gmail.com"
+        }
+    ],
+    "require": {}
+}
