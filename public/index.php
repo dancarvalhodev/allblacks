@@ -13,5 +13,6 @@ $route->get('/index_update_form/{id}', 'App\Controllers\PersonController@index_u
 // Post
 $route->post('/xml/upload', 'App\Controllers\XMLController@upload');
 $route->post('/insert', 'App\Controllers\PersonController@insert');
+$route->post('/update', 'App\Controllers\PersonController@update');
 
 $route->on();

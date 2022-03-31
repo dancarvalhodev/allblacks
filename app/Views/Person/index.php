@@ -1,6 +1,6 @@
 <div class="card card-componente_2">
   <div class="card-body">
-    <h5 class="card-title text-center">Envio de XML</h5>
+    <h5 class="card-title text-center">Cadastro de Torcedor</h5>
     <div>
       <form class="row g-3" action="/insert" method="post">
         <div class="mb-3">

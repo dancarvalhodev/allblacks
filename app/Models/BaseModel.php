@@ -28,7 +28,7 @@ class BaseModel
           bairro VARCHAR(100) NOT NULL,
           cidade VARCHAR(100) NOT NULL,
           uf VARCHAR(3) NOT NULL,
-          telefone VARCHAR(15),
+          telefone VARCHAR(20),
           email VARCHAR(50),
           ativo VARCHAR(1) NOT NULL
         )";
