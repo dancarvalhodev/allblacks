@@ -32,10 +32,8 @@ class EmailController extends BaseController
       try 
       {
         $response = $sendgrid->send($email);
-        var_dump($response->headers);
-        die;
 
-        if($response[0] == 'HTTP/1.1 401 Unauthorized')
+        if($response->statusCode() == 401)
         {
           $_SESSION['msg'] = 'Limite diário de envio de e-mails atingido!';
           header('Location: /');
