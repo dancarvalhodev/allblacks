@@ -21,7 +21,7 @@
           <tbody>
               <?php if(empty($_SESSION['data'])): ?>
                   <tr>
-                      <td colspan="6">
+                      <td colspan="10">
                           <div class="alert alert-danger" role="alert">
                               Nenhum Torcedor encontrado
                           </div>
