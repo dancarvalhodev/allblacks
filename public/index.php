@@ -1,8 +1,8 @@
 <?php
 require __DIR__ . '../../vendor/autoload.php';
 session_start();
-define('EMAIL_MARKETING', 'danielcarvalhodev@gmail.com');
-define('SENDGRID_APIKEY', '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');
+define('EMAIL_MARKETING', '');
+define('SENDGRID_APIKEY', '');
 
 $route = \PlugRoute\RouteFactory::create();
 
