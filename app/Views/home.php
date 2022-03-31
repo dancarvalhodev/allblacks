@@ -14,22 +14,22 @@
     <div>
       <div class="row p-1">
         <div class="col-sm-12 text-center">
-          <a href="/xml" class="btn btn-dark btn-home">Consumir XML</a>
+          <a style="background: #719936; color:white" href="/xml" class="btn btn-light btn-home">Consumir XML</a>
         </div>
       </div>
       <div class="row p-1">
         <div class="col-sm-12 text-center">
-          <a href="/insert_form" class="btn btn-dark btn-home">Inserir Torcedores</a>
+          <a style="background: #719936; color:white" href="/insert_form" class="btn btn-home">Inserir Torcedores</a>
         </div>
       </div>
       <div class="row p-1">
         <div class="col-sm-12 text-center">
-          <a href="/index_update" class="btn btn-dark btn-home">Atualizar Dados</a>
+          <a style="background: #719936; color:white" href="/index_update" class="btn btn-light btn-home">Atualizar Dados</a>
         </div>
       </div>
       <div class="row p-1">
         <div class="col-sm-12 text-center">
-          <a href="/email" class="btn btn-dark btn-home">Disparar E-mails</a>
+          <a style="background: #719936; color:white" href="/email" class="btn btn-light btn-home">Disparar E-mails</a>
         </div>
       </div>
     </div>
