@@ -46,7 +46,11 @@
           </tbody>
       </table>
     </div>
-
-
+    <hr>
+    <div class="row text-center">
+      <div class="col-sm-12 ">
+        <a class="btn btn-warning" href="/">Voltar</a>
+      </div>
+    </div>
   </div>
 </div>
