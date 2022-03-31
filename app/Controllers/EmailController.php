@@ -12,43 +12,51 @@ class EmailController extends BaseController
 
 	public function send()
 	{
-    $stmt = $this->banco->conn->prepare("SELECT email FROM torcedor");
-		$stmt->execute();
-		$data = $stmt->fetchAll();
-
-    foreach($data as $torcedor)
+    if(SENDGRID_APIKEY != '' && EMAIL_MARKETING != '')
     {
-      $email = new \SendGrid\Mail\Mail();
-      $email->setFrom(EMAIL_MARKETING);
-      $email->setSubject("E-mail de Marketing");
-      $email->addTo($torcedor['email']);
-      $email->addContent(
-          "text/html",
-          'Marketing'
-      );
+      $stmt = $this->banco->conn->prepare("SELECT email FROM torcedor");
+      $stmt->execute();
+      $data = $stmt->fetchAll();
 
-      $sendgrid = new \SendGrid(trim(SENDGRID_APIKEY));
-
-      try 
+      foreach($data as $torcedor)
       {
-        $response = $sendgrid->send($email);
+        $email = new \SendGrid\Mail\Mail();
+        $email->setFrom(EMAIL_MARKETING);
+        $email->setSubject("E-mail de Marketing");
+        $email->addTo($torcedor['email']);
+        $email->addContent(
+            "text/html",
+            'Marketing'
+        );
 
-        if($response->statusCode() == 401)
-        {
-          $_SESSION['msg'] = 'Limite diário de envio de e-mails atingido!';
-          header('Location: /');
-        }
-        else
-        {
-          $_SESSION['msg'] = 'Disparo feito com sucesso!';
-          header('Location: /');
-        }
+        $sendgrid = new \SendGrid(trim(SENDGRID_APIKEY));
 
-      } 
-      catch (\Exception $e) 
-      {
-        echo $e->getMessage();
+        try 
+        {
+          $response = $sendgrid->send($email);
+
+          if($response->statusCode() == 401)
+          {
+            $_SESSION['msg'] = 'Limite diário de envio de e-mails atingido!';
+            header('Location: /');
+          }
+          else
+          {
+            $_SESSION['msg'] = 'Disparo feito com sucesso!';
+            header('Location: /');
+          }
+
+        } 
+        catch (\Exception $e) 
+        {
+          echo $e->getMessage();
+        }
       }
+    }
+    else
+    {
+      $_SESSION['msg'] = 'Dados de e-mail e api não foram definidos';
+      header('Location: /');
     }
 	}
 }
