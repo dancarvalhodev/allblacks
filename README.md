@@ -1,4 +1,9 @@
 # Desafio Técnico P21 Sistemas
+## Solução Proposta
+- Foi criado um sistema web que possibilita o consumo de arquivos XML mediante upload.
+- Além disso, possibilita a inserção de novos torcedores manualmente e também possibilita a atualização do telefone e e-mail dos mesmos caso essas informações não estejam corretas ou presentes no XML.
+- Por fim é possível disparar e-mails para todos os torcedores cadastrados na base de dados mediante o clique de um botão.
+
 ## Requisitos
 - Docker e Docker Compose Instalados.
   - [Instalação do Docker em Windows](https://docs.docker.com/desktop/windows/install/)
